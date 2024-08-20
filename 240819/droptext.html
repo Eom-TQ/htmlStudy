@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자 깨짐 및 튕기기 애니메이션</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            font-size: 100px;
+            font-weight: bold;
+            color: #3498db;
+            position: relative;
+            animation: fall 2s ease forwards;
+        }
+
+        /* 글자가 떨어지는 애니메이션 */
+        @keyframes fall {
+            0% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* 자모가 깨지고 튕기는 애니메이션 */
+        @keyframes shatter {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(calc(var(--y) * 300px)) translateX(calc(var(--x) * 300px)) rotate(calc(var(--r) * 360deg));
+            }
+        }
+
+        .piece {
+            display: inline-block;
+            opacity: 0;
+            position: absolute;
+            animation: shatter 1.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="text-container">안녕하세요</div>
+
+    <script>
+        const container = document.getElementById('text-container');
+        const text = container.textContent;
+        container.textContent = ''; // 기존 텍스트 삭제
+
+        // 각 글자를 자모 단위로 분리하여 처리
+        const jamo = text.split(''); 
+
+        // 글자를 조각으로 나누어 각각 떨어지고 튕기게 함
+        jamo.forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.classList.add('piece');
+
+            // 자모 각각의 초기 위치 설정
+            span.style.left = `${index * 100}px`;
+            span.style.top = `0px`;
+
+            // 무작위 각도와 방향 설정
+            const randomX = Math.random() * 2 - 1;  // -1에서 1 사이의 값
+            const randomY = Math.random() * 2 - 1;
+            const randomRotate = Math.random() * 2 - 1;
+
+            span.style.setProperty('--x', randomX);
+            span.style.setProperty('--y', randomY);
+            span.style.setProperty('--r', randomRotate);
+
+            container.appendChild(span);
+
+            // 일정 시간 후 글자가 깨지게 함
+            setTimeout(() => {
+                span.style.opacity = '1';  // 조각이 보이도록 설정
+            }, 2000); // 2초 후 시작
+        });
+
+    </script>
+</body>
+</html>
