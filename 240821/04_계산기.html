@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="num1">
+    +
+    <input type="text" name="" id="num2">
+    =
+    <input type="text" name="" id="result">
+    <br>
+    <input type="button" value="덧셈" onclick="더하기()">
+    <script>
+        function 더하기() {
+            let n1 = document.getElementById('num1').value;
+            let n2 = document.getElementById('num2').value;
+            let result = document.getElementById('result');
+
+            let res = (n1*1)+(n2*1);
+            
+            result.value = res;
+        }
+
+
+    </script>
+
+</body>
+</html>
