@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="num1">
+    
+    <input type="radio" name="op" value="+" checked>+
+    <input type="radio" name="op" value="-">-
+    <input type="radio" name="op" value="*">*
+    <input type="radio" name="op" value="/">/
+
+    <input type="text" name="" id="num2">
+    <input type="button" name="" id="" value="전송" onclick="result()">
+    <input type="text" name="" id="result">
+    <script>
+        function result() {
+            let n1= document.getElementById('num1').value;
+            let n2 = document.getElementById('num2').value;
+
+            let ra = document.getElementsByName('op');
+            let res = 0;
+            for(let i = 0 ; i <ra.length;i++) {
+                if(ra[i].checked) {
+                    console.log(i);
+                    switch (i) {                       
+                        case 0 : 
+                            res = Number(n1)+Number(n2);    
+                            break;
+                        case 1 : 
+                            res = Number(n1)-Number(n2);
+                            break;
+                        case 2 : 
+                             res = Number(n1)*Number(n2);
+                            break;
+                        case 3 : 
+                            res = Number(n1)/Number(n2);
+                            break;
+                        }
+                }
+            }
+
+            document.getElementById('result').value = res;
+        }
+
+
+
+    </script>
+
+</body>
+</html>
