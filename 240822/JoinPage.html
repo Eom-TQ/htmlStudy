@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border 네온사인</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #232323;
+        }
+        .box {
+            position: relative;
+            width: 600px;
+            height: 700px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 20%;
+            width: 400px;
+            height: 700px;
+            background: linear-gradient(0deg, transparent, transparent,#ff7d8e, #ff7d8e, #ff7d8e);
+            z-index: 2;
+            transform-origin: bottom;
+            animation: border 6s linear infinite;
+        }
+        .box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 20%;
+            width: 400px;
+            height: 700px;
+            background: linear-gradient(0deg, transparent, transparent,#ff7d8e, #ff7d8e, #ff7d8e);
+            z-index: 1;
+            transform-origin: bottom;
+            animation: border 6s linear infinite;
+            animation-delay: -3s;
+        }
+        .borderLine {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2; 
+        }
+        .box form {
+            position: absolute;
+            inset: 4px;
+            background: #222;
+            padding: 20px 30px;
+            border-radius: 8px;
+            z-index: 3; 
+            color: white; 
+        }
+        @keyframes border {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            height: 100%;
+        }
+        tr,td {
+            width: 50px;
+            height: 18px;
+            padding: 2px 10px;
+        }
+        tr > th {
+            text-align: right;
+            width: 60px;
+        }
+        textarea {
+            width: 80%;
+            height: 150px;
+        }
+        textarea:focus {
+            width: 80%;
+            height: 150px;
+            border:2px solid;
+            border-color: #ff7d8e; 
+            outline: none; 
+        }
+        tfoot {
+            text-align: center;
+            height: 50px;
+        }
+        .error {
+            color:red;
+        }
+        .valid {
+            color:lightblue;
+        }
+        .default {
+            color:white;
+        }
+        .birthday {
+            background-color: white;
+            border: 0;
+            width: 50px;
+            height:20px;
+        }
+        td > div {
+            font-size: 12px;
+        }
+        input[type="text"] {
+            padding: 4px;         
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+        input:focus {
+            border-color: #ff7d8e; 
+            outline: none; 
+        }
+        input[type="password"] {
+            padding: 4px;         
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+        input[type="email"] {
+            padding: 4px;         
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #ff7d8e; 
+            border-color: #ff7d8e; 
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            width: 4px;
+            height: 6px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        input[type="button"] {
+            width: 80px;
+            height: 32px;
+            background-color: #ff7d8e;
+            border: 2px solid white;
+            border-radius: 6px;
+            color: white;
+        }
+        input[type="button"]:active {
+            background-color: white; 
+            border: 2px solid #ff7d8e;
+            color: #ff7d8e;
+            transform: scale(0.95); 
+        }
+        .bottomLine{
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+        h2 {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+            position:relative;
+            color: #ff7d8e;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h2>회원가입</h2>
+    <div class="box">
+        <div class="borderLine"></div>
+        <form>
+            <!-- 폼 내용 추가 -->
+            <table>
+                <thead>
+                    <th colspan="2" class="bottomLine" style="padding-top: 0px;">회원 기본 정보</th>
+                </thead>
+                <tr>
+                    <th >아이디</th>
+                    <td><input type="text" name="" id="user_id"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div id="id_valid" class="default">4~12자의 영문 대소만자와 숫자로만 입력</div></td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td><input type="password" name="" id="user_pass"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div id="password_valid" class="default">4~12자의 영문 대소만자와 숫자로만 입력</div></td>
+                </tr>
+                <tr>
+                    <th>비밀번호 확인</th>
+                    <td><input type="password" name="" id="user_pass_chk"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div id="pass_chk_valid" class="default">&nbsp;</div></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td><input type="email" name="" id="user_email"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div id="email_valid" class="default">예) id@domain.com</div></td>
+                </tr>
+
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" name="" id="user_name"></td>
+                </tr>
+                <tr>
+                    <th colspan="2" class="bottomLine">개인 신상 정보</th>
+                </tr>
+                <tr>
+                    <th>주민등록번호</th>
+                    <td><input type="text" name="" id="user_ssn"> </td>
+                </tr>
+                    <tr>
+                        <td></td>
+                        <td><div id="ssn_valid" class="default">예) 9901043532121</div></td>
+                    </tr>
+                <tr>
+                    <th>생일</th>
+                    <td>
+                        <input type="text" class="birthday" id="birthday_year" disabled >년
+                        <input type="text" class="birthday" id="birthday_month" disabled >월
+                        <input type="text" class="birthday" id="birthday_day" disabled >일
+                    </td>
+                </tr>
+                <tr>
+                    <th>관심분야</th>
+                    <td>
+                        <input type="checkbox" name="interest" value="컴퓨터">컴퓨터 
+                        <input type="checkbox" name="interest" value="인터넷">인터넷 
+                        <input type="checkbox" name="interest" value="여행">여행 
+                        <input type="checkbox" name="interest" value="영화감상">영화감상 
+                        <input type="checkbox" name="interest" value="음악감상">음악감상 
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <th>자기소개</th>
+                    <td><textarea name="" id="introduce"></textarea></td>
+                </tr>
+                <tfoot>
+                    <td colspan="2">
+                        <input type="button" value="회원 가입" onclick="join()">
+                        <input type="button" value="다시 입력">
+                    </td>
+                </tfoot>
+            </table>
+
+        </form>
+        </div>
+    </div>
+
+    <script>
+        let id = document.getElementById('user_id');
+        let password = document.getElementById('user_pass');
+        let pass_chk = document.getElementById('user_pass_chk');
+        let email = document.getElementById('user_email');
+        let name = document.getElementById('user_name');
+        let ssn = document.getElementById('user_ssn');
+        let interest = document.getElementsByName('interest');
+        let introduce = document.getElementById('introduce');
+        let birthday_year = document.getElementById('birthday_year');
+        let birthday_month = document.getElementById('birthday_month');
+        let birthday_day = document.getElementById('birthday_day');
+
+        let id_valid = document.getElementById('id_valid');
+        let password_valid = document.getElementById('password_valid');
+        let pass_chk_valid = document.getElementById('pass_chk_valid');
+        let email_valid = document.getElementById('email_valid');
+        let ssn_valid = document.getElementById('ssn_valid');
+
+        id.onkeyup = function () {
+            console.log(123);
+            if(id.value.length !== 0) {
+                if(onlyNumberAndEnglish(id.value) === false) {
+                    console.log(123);
+                    id_valid.textContent = "4~12자의 영문 대소문자와 숫자로만 입력";
+                    id_valid.className = "error";              
+                }
+
+                else if(valueLength(id.value) === false) {
+                    id_valid.textContent = "4~12자의 영문 대소문자와 숫자로만 입력";
+                    id_valid.className = "error";   
+                }
+
+                else if(valueLength(id.value) || onlyNumberAndEnglish(id.value)) {
+                    id_valid.textContent = "4~12자의 영문 대소문자와 숫자로만 입력";
+                    id_valid.className = "valid";
+                }
+            } 
+            else {
+                id_valid.textContent = "4~12자의 영문 대소문자와 숫자로만 입력";
+                id_valid.className = "default"; 
+            }
+        }
+
+        password.onkeyup = function () {
+            console.log(123);
+            if(password.value.length !== 0) {
+                if(onlyNumberAndEnglish(password.value) === false) {
+                    console.log(123);
+                    password_valid.textContent = "4~12글자의 영문 대소문자와 숫자로만 입력";
+                    password_valid.className = "error";              
+                }
+
+                else if(valueLength(password.value) === false) {
+                    password_valid.textContent = "4~12글자의 영문 대소문자와 숫자로만 입력";
+                    password_valid.className = "error";   
+                }
+
+                else if(valueLength(password.value) || onlyNumberAndEnglish(password.value)) {
+                    password_valid.textContent = "4~12글자의 영문 대소문자와 숫자로만 입력";
+                    password_valid.className = "valid"; 
+                }
+            } 
+            else {
+                password_valid.textContent = "4~12글자의 영문 대소문자와 숫자로만 입력";
+                password_valid.className = "default"; 
+            }
+        }
+
+        pass_chk.onkeyup = function () {
+            if (pass_chk.value.length !== 0) {
+                if(isMatch(password.value, pass_chk.value)) {
+                    pass_chk_valid.textContent ="비밀번호 일치";
+                    pass_chk_valid.className = "valid";
+                }
+                else {
+                    pass_chk_valid.textContent ="비밀번호 불일치";
+                    pass_chk_valid.className = "error";
+                }
+                
+            } else {
+                pass_chk_valid.textContent ="비밀번호 재입력";
+            }
+        }
+
+        email.onkeyup = function () {
+            if(email.value.length !==0) {
+                if(validEmail(email.value)) {
+                    email_valid.textContent ="올바른 이메일 형식입니다.";
+                    email_valid.className = "valid";
+                } else {
+                    email_valid.textContent ="이메일 형식이 올바르지 않습니다.";
+                    email_valid.className = "error";
+                }
+            } else {
+                email_valid.textContent="예) id@domain.com";
+                email_valid.className = "default";
+            }
+        }
+
+        ssn.onkeyup = function() {
+            if(ssn.value.length !==0) {
+                if(validSsn(ssn.value)) {
+                    ssn_valid.textContent="올바른 주민등록번호 형식입니다.";
+                    ssn_valid.className = "valid";
+                    let birthday = ssnForBirthday(ssn.value);
+                    let year1 = birthday.substring(0,4);
+                    let month1 = birthday.substring(4,6);
+                    let day1 = birthday.substring(6,8);
+
+                    console.log(year1);
+                    birthday_year.value = year1;
+                    birthday_month.value = month1;
+                    birthday_day.value = day1;
+                } else {
+                    ssn_valid.textContent="주민등록번호 형식이 올바르지않습니다.";
+                    ssn_valid.className = "error";
+                }
+            } else {
+                    ssn_valid.textContent="예)9901043532121";
+                    ssn_valid.className = "default";
+            }
+        }
+
+        function ssnForBirthday(ssn) {
+            let bir = String(ssn);
+            let year = bir.substring(0,2);
+            let month = bir.substring(2,4);
+            let day = bir.substring(4,6);
+
+            if(year>24) {
+                year = Number(year)+1900;
+            } else {
+                year = Number(year)+2000;
+            }
+            console.log(year);
+            return String(year)+String(month)+String(day);
+        }
+
+        function join() {
+            let inter = interests();
+            
+            if(id_valid.className!=='valid') {
+                alert("아이디를 확인해주세요");
+                id.value ="";
+                id.focus();
+            }
+            else if(pass_chk_valid.className!=='valid'){
+                alert("비밀번호를 확인해주세요");
+                password.value="";
+                password.focus();
+            }else if(email_valid.className!=='valid'){
+                alert("이메일을 확인해주세요");
+                email.value="";
+                email.focus();
+            }
+            else if(name.value=="") {
+                alert("이름을 입력해주세요");
+            } 
+            else if(ssn_valid.className!=='valid'){
+                alert("주민등록번호를 확인해 주세요");x
+            }
+            else if(inter.length==0){
+                alert("관심분야를 한개 이상선택해야합니다.");
+            } 
+            else {
+                console.log("아이디: "+id.value);
+                console.log("비밀번호: "+password.value);
+                console.log("이메일: "+email.value);
+                console.log("이름: "+ name.value);
+                console.log("주민등록번호: "+ ssn.value);
+                console.log("생일: "+birthday_year.value+birthday_month.value+birthday_day.value);
+                console.log("관심분야: "+ inter);
+                console.log("자기소개: "+introduce.value);
+                
+            }
+        }
+
+        function interests() {
+            let result = new Array();
+            for(var i = 0; i < interest.length; i++) {
+
+                if(interest[i].checked) {
+                    result.push(interest[i].value);
+                }
+            }
+            return result;
+        }
+
+        function valueLength(value) {
+            return value.length >= 4 && value.length <= 12 
+        }
+        function onlyNumberAndEnglish(str) {
+            return /^[A-Za-z0-9]+$/.test(str);
+        }
+        function isMatch (password1, password2){
+            return password1 === password2;
+        }
+        function validEmail(email) {      
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        function validSsn(ssn){
+            return /^\d{6}\d{7}$/.test(ssn);
+        }
+    </script>
+
+</body>
+</html>
