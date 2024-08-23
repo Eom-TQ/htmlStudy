@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 3px solid #000;
+            background-color: deepskyblue;
+            transition: width 2s, height 3s;
+        }
+        .roolllll {
+            border-radius: 300px;
+            animation: test02 5s  infinite linear;
+        }
+        @keyframes test02 {
+            /* 시작 */
+            0% { margin-left: 0px;
+                transform: rotate(0deg);
+            background-color: red;}
+            /* 종료 */
+            50% {margin-left: 1000px;
+                transform: rotate(360deg);
+            background-color: deepskyblue;}
+
+            100% { margin-left: 0px;
+                transform: rotate(0deg);
+            background-color: red;}
+        }
+
+        .hei {
+            height: 500px;
+        }
+        .sizeu {
+            width: 100vh;
+            height: 800px;
+        }
+        .leftt {
+            margin: 20% 50%;
+        }
+        .backimg {
+            background-image: url(../img/birthdayCoco.gif);
+        }
+
+        .animation {
+            animation: test01 2s infinite linear;
+        }
+        
+        @keyframes test01 {
+            /* 시작 */
+            from { transform: rotate(0deg);
+            background-color: red;}
+            /* 종료 */
+            to {transform: rotate(360deg);
+            background-color: deepskyblue;}
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id = "btn1" value="굴러">
+    <input type="button" id = "btn2" value="크기 키우기">
+    <input type="button" id = "btn3" value="위치 바꾸기">
+    <input type="button" id = "btn4" value="사진">
+    <input type="button" id = "btn5" value="회전">
+    <div class="box"></div>
+
+    <script>
+        document.getElementById('btn1').addEventListener('click', roolllll);
+        document.getElementById('btn2').addEventListener('click', sizeu); 
+        document.getElementById('btn3').addEventListener('click', leftt);
+        document.getElementById('btn4').addEventListener('click', backimg);
+        document.getElementById('btn5').addEventListener('click', animation);
+
+        function roolllll() {
+            let box = document.querySelector('.box')
+
+            if(box.classList.contains('roolllll')) {
+                box.classList.remove('roolllll');
+            } else {
+                box.classList.add('roolllll');
+            }
+        }
+        
+        function sizeu() {
+            let box = document.querySelector('.box')
+
+            if(box.classList.contains('sizeu')) {
+                box.classList.remove('sizeu');
+            } else {
+                box.classList.add('sizeu');
+            }
+        }
+
+        function leftt() {
+            let box = document.querySelector('.box')
+
+            if(box.classList.contains('leftt')) {
+                box.classList.remove('leftt');
+            } else {
+                box.classList.add('leftt');
+            }
+        }
+
+        function backimg() {
+            let box = document.querySelector('.box')
+
+            if(box.classList.contains('backimg')) {
+                box.classList.remove('backimg');
+            } else {
+                box.classList.add('backimg');
+            }
+        }
+
+        function animation() {
+            let box = document.querySelector('.box')
+
+            if(box.classList.contains('animation')) {
+                box.classList.remove('animation');
+            } else {
+                box.classList.add('animation');
+            }
+        }
+    </script>
+
+</body>
+</html>

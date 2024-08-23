@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="두 번째 수">
+
+    <select>
+        <option value="+">+</option>
+        <option value="-">-</option>
+    </select>
+    <input type="text" placeholder="두 번째 수">
+    <input type="button" value="계산" onclick="result()">
+    <span id ='re'></span>
+<script>
+    function result() {
+        let nums = document.getElementsByTagName('input');
+        let hi = document.getElementsByTagName('select');
+        let re = document.getElementById('re');
+        let res = 0; 
+
+        if(hi[0].value=='+') {
+            res =Number(nums[0].value)+Number(nums[1].value)
+        } else {
+            res =Number(nums[0].value)-Number(nums[1].value)
+        } 
+        re.innerText = res;        
+    }
+</script>
+
+</body>
+</html>

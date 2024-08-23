@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        tr, td {
+            border:1px solid #000;
+        }
+        td {
+            
+            width: 80px;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <input type="number" name="" id="">
+    <input type="number" name="" id="">
+    <input type="button" value="클릭" onclick="gugu()">
+    <input type="button" value="클릭" onclick="gugu2()">
+    <div id="result">
+        
+    </div>
+    <table id="result2">
+        
+    </table>
+    <script>
+        function gugu() {
+        let str = '';
+        let nums = document.querySelectorAll('input');
+        console.log()
+            for(let i=0; i<nums[1].value;i++) {
+                str += '<span>'+nums[0].value+'x'+Number(i+1)+'='+nums[0].value*(Number(i+1))+'</span><br>';
+            }
+            document.getElementById('result').innerHTML = str;
+        }
+
+        function gugu2() {
+        let str = '';
+        let nums = document.querySelectorAll('input');
+        console.log()
+            for(let i=1; i<10;i++) {
+                str += '<tr>'
+                for(let j=1; j<10;j++) {
+                str += '<td>'+j+'x'+i+'='+j*i+'</td>';
+                }
+                str += '</tr>'
+            }
+            document.getElementById('result2').innerHTML = str;
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+
+</html>
