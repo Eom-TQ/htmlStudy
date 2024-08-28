@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="1"> <br>
+    <input type="text" name="" id="2"> <br>
+
+    <input type="button" value="계산" onclick="result()">
+
+    <script>
+        function result() {
+            let obj1 = {};
+            let num1 = document.getElementById('1');
+            let num2 = document.getElementById('2');
+            
+            obj1.plus = Number(num1.value) + Number(num2.value);
+            obj1.minus = Number(num1.value) - Number(num2.value);
+            obj1.mul = (num1.value*1) * ( num2.value*1);
+            obj1.div = (num1.value*1) / ( num2.value*1);
+            
+            console.log(obj1);
+        }
+
+    </script>
+</body>
+</html>

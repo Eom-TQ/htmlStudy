@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="출력" onclick="btnclick()">
+    <span id ="result"> 여기 출력</span>
+
+
+
+    <script>
+        let obj1 = {};
+        
+        //object 사용하는 이유, 데이터 정리.
+        //getterSetter하고 비슷한 역할.
+        //obj사용할 때 주의사항.
+        //데이터타입이 정의가 안되있어서, value에는 그냥 모두 다 들어간다
+        //<div class = "name"></div>
+        //json안에 배열도 선언 가능
+        //json안에 function 선언 가능 함.
+
+        obj1.a = 'apple';
+        obj1.b = 'banana';
+        console.log(typeof(obj1),obj1);
+
+        let arr = ['a', 'b', 'c'];
+        obj1.arr = arr;
+        console.log(obj1)
+
+        let obj2 = new Object();
+        obj2['apple'] = 'apple';
+        obj2['b'] = 'banana'; 
+        obj2.address = '서울';
+        obj1.obj = obj2;
+        
+        console.log(obj1);
+        //obj1.fun();
+        
+
+        function btnclick() {
+            let sp = document.getElementById("result");
+
+            sp.innerText = obj1.obj['address'];
+            
+        }
+
+        function start() {
+            alert('start');
+            console.log('start');
+        }
+
+
+
+        //java 형태
+        // Meh me = new Meh();
+
+        // class Meh {
+        //     String name 
+        // }
+
+    </script>
+</body>
+</html>

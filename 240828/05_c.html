@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음식 사진</title>
+    <style>
+
+
+        /** main tool */
+        .picMain {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /** 음식사진 메인 */
+        .mainPic {
+            width: 400px;
+            height: 300px;
+            background-size: cover;
+        }
+
+        /** 음식사진 보조 **/
+        .suvPic {
+            width: 100%;
+            height: 100vh;
+        }
+
+        /** 갤러리 스타일 */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .photo {
+            width: calc(33% - 40px);
+            /* 너비 설정, 마진을 고려한 계산 */
+            margin: 20px;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        /** 버튼 공간 */
+        .btn_area {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            height: 70px;
+        }
+
+        .btn01 {
+            margin: 15px;
+            padding: 15px;
+            height: 30px;
+            border-radius: 15px;
+            font-size: 25px;
+            font-weight: bold;
+            align-items: center;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="picMain">
+        <div class="mainPic"></div>
+        <div class="suvPic">
+            <div class="btn_area">
+                <div class="btn01" onclick="changeImg('cookie')">쿠키</div>
+                <div class="btn01" onclick="changeImg('cake')">케이크</div>
+            </div>
+            <!-- 사진첩 갤러리 -->
+            <div class="gallery">
+                <div class="photo">사진 2</div>
+                <div class="photo">사진 3</div>
+                <div class="photo">사진 4</div>
+                <div class="photo">사진 4</div>
+                <div class="photo">사진 4</div>
+                <!-- 추가 사진 필요 시 여기에 더 추가 -->
+            </div>
+        </div>
+    </div>
+    <script>
+        let dessert = {
+            list: [
+                { dessert:'cookie', img: '../img/dessert/cookie1.jpg' },
+                { dessert:'cookie', img: '../img/dessert/cookie2.jpg' },
+                { dessert:'cookie', img: '../img/dessert/cookie3.jpg' },
+                { dessert:'cookie', img: '../img/dessert/cookie4.jpg' },
+                { dessert:'cookie', img: '../img/dessert/cookie5.jpg' },
+                { dessert:'cookie', img: '../img/dessert/cookie6.jpg' },
+
+                { dessert:'cake', img: '../img/dessert/cake1.jpg' },
+                { dessert:'cake', img: '../img/dessert/cake2.jpg' },
+                { dessert:'cake', img: '../img/dessert/cake3.jpg' },
+                { dessert:'cake', img: '../img/dessert/cake4.jpg' },
+                // { dessert:'cake', img: '../img/dessert/cake5.jpg' },
+                // { dessert:'cake', img: '../img/dessert/cake6.jpg' },
+            ]
+        } 
+        let list = dessert.list;
+
+
+        function changeImg(dessert) {
+            let gallery = document.querySelector('.gallery');
+            let cnt = 0;
+            let str ='';
+            for (let i = 0; i< list.length; i++) {    
+                if(dessert == list[i].dessert) {
+                   str+= '<div class="photo" style="background-image: url('+list[i].img+')" onclick="changeMainImg(\''+list[i].img+'\')"></div>'
+                   cnt++;
+                }
+            }
+            gallery.innerHTML = String(str);
+        }
+
+        function changeMainImg(img) {
+            let mainImg = document.querySelector('.mainPic');
+            mainImg.style.backgroundImage = "url('"+img+"')";
+        }
+
+    </script>
+</body>
+</html>

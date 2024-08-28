@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="menu01" onchange="img()">
+        <option value="coffee">커피</option>
+        <option value="cake">케이크</option>
+        <option value="cookie">쿠키</option>
+    </select>
+<br>
+    <img src="../img/coffee.jpg" id="img"></img>
+
+    <div></div>
+    <script>
+        function img() {
+            let menu01 = document.querySelector('select');
+            let img = document.querySelector('img');
+
+
+            if (menu01.value =="coffee") {
+                img.src="../img/coffee.jpg"
+            }
+            if (menu01.value =="cake") {
+                img.src="../img/cake.jpg"
+            }
+            if (menu01.value =="cookie") {
+                img.src="../img/cookie.jpg"
+            }
+        }
+
+    </script>
+
+</body>
+</html>
