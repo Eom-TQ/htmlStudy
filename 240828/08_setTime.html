@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //현재 pc기준으로 날짜를 정의. (클라이언트 기준, 서버에 저장시 활용 x)
+        let today = new Date();
+        console.log(today.getFullYear());
+        console.log(today.getMonth()+1); //월은 0부터시작
+        console.log(today.getDay());
+        console.log(today.getDate());
+        console.log(today);
+
+        // setInterval(function() {
+        //     let today = new Date();
+        //     console.log(today.getHours()+ '-'+ today.getMinutes()+'-'+today.getSeconds());
+        // }, 1000); //1초 ms
+        clock();
+        function clock() {
+            setTimeout(function() {
+                alert('time');
+                clock()
+            },2000)
+        }
+       
+      
+    </script>
+</body>
+</html>
